@@ -1,15 +1,25 @@
-{% load static %}
-
-<nav aria-label="...">
-    <a title="" href="#" class="btn-small-white pagination-back">قبلی</a>
-    <ul class="pagination">
-        <li class="page-item active">
-            <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item page-item-more"><a class="page-link" href="#">...</a></li>
-        <li class="page-item"><a class="page-link" href="#">25</a></li>
-    </ul>
-    <a title="" href="blog_post.html" class="btn-small-white pagination-next">بعدی</a>
-</nav>
+{% if articles.has_other_pages %}
+    <nav aria-label="...">
+        {% if articles.has_previous %}
+            <a title="" href="?page={{ articles.previous_page_number }}"
+               class="btn-small-white pagination-back">قبلی</a>
+        {% endif %}
+        <ul class="pagination">
+            {% for i in articles.paginator.page_range %}
+                {% if articles.number == i %}
+                    <li class="page-item active">
+                        <a class="page-link" href="">{{ i }}<span class="sr-only">{{ i }}</span></a>
+                    </li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+{#                    <li class="page-item"><a class="page-link" href="#">3</a></li>#}
+{#                    <li class="page-item page-item-more"><a class="page-link" href="#">...</a></li>#}
+{#                    <li class="page-item"><a class="page-link" href="#">25</a></li>#}
+                {% endif %}
+            {% endfor %}
+        </ul>
+        {% if articles.has_next %}
+            <a title="" href="?page={{ articles.next_page_number }}" class="btn-small-white pagination-next">بعدی</a>
+        {% endif %}
+    </nav>
+{% endif %}

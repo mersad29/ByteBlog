@@ -1,0 +1,263 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tz %}
+
+{% block content %}
+    <!-- NEXT AND PREVIOUS ARTICLES -->
+    <div class="article-nav">
+        <ul>
+            <li>
+                <a href="#" class="next-article" title="پست بعدی">
+                    <i class="pe-7s-angle-right"></i>
+                    <div>
+                        <p>پست بعدی</p>
+                        <h3>جاوا اسکریپت 2016</h3>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="previous-article" title="پست قبلی">
+                    <i class="pe-7s-angle-left"></i>
+                    <div>
+                        <p>پست قبلی</p>
+                        <h3>نارنجی ی رنگ سیاه</h3>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- MAIN -->
+    <main>
+        <!-- ARTICLE BLOG POST -->
+        <section class="articles articles-blog-post">
+            <article class="articles-blog-post">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-12">
+                            <!-- TEXT ARTICLE -->
+                            <div class="articles-header">
+                                {% if articles.time_difference < 24 %}
+                                    <time datetime="2016-10-11">{{ articles.time_difference }}ساعت پیش</time>
+                                    <span class="articles-header-tag-blue">داغ</span>
+                                {% else %}
+                                    <time datetime="2016-10-11">{{ articles.created_time|timezone:"Asia/Tehran" }}</time>
+                                {% endif %}
+                                <span class="articles-header-category"><a href="#" class="green" title="">
+                        {% for category in articles.category.all %}
+                            {{ category.title }}
+                            {% if not forloop.last %},
+                            {% endif %}
+                        {% endfor %}
+                    </a></span>
+                            </div>
+
+                            <div class="articles-content">
+                                <h1 class="articles-content-blog-post-title"><a href="#"
+                                                                                title="{{ articles.title }}">
+                                    {{ articles.title }}داشتن کسب و کار شما و مشتریان با سیاست های دیجیتال امن</a></h1>
+                                <p>
+                                    {{ articles.body|safe }}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- SHARE THIS BLOCK -->
+                        <div class="col-lg-2 col-12">
+                            <div class="articles-blog-post-share">
+                                <h3>اشتراک گذاری</h3>
+                                <div>
+                                    <ul>
+                                        <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i> فیسبوک</a></li>
+                                        <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i> توئیتر</a></li>
+                                        <li><a href="#" title="Google+"><i class="fa fa-google-plus"></i> گوگل پلاس</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <!-- end ARTICLE BLOG POST -->
+        <!-- ARTICLE BOTTOM INFO -->
+        <div class="articles-info">
+            <!-- ARTICLE BOTTOM INFO AUTHOR -->
+            <section class="articles-info-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-12">
+                            <div class="articles-footer">
+                                <ul class="articles-footer-info">
+                                    <li><a title="" href="#" class="light-link"><i class="pe-7s-comment"></i> 7 پاسخ</a>
+                                    </li>
+                                    <li><a title="" href="#" class="light-link"><i class="pe-7s-like"></i> 1221</a></li>
+                                </ul>
+                                <button class="btn btn-light-blue"><a title="Write a response" href="#">یک پاسخ
+                                    بنویسید</a></button>
+                            </div>
+                            <div class="articles-author">
+                                <img src="img/profile-picture.png" alt="" data-rjs="2">
+                                <div class="articles-author-right">
+                                    <h4>محمد یاری</h4>
+                                    <div class="social">
+                                        <a href="#" title="Twitter"><i class="icon-social_twitter_circle"></i></a>
+                                        <a href="#" title="Github"><i class="icon-social_github_circle"></i></a>
+                                        <a href="#" title="LinkedIn"><i class="icon-social_linkedin_circle"></i></a>
+                                    </div>
+                                    <p>
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ARTICLE BOTTOM INFO LAST ARTICLES -->
+            <section class="articles-info-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="articles-info-section-title">آخرین دفعات بازدید:</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="banners">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-12">
+                                <div class="banner-wrapper">
+                                    <a href="#" title="آنگولار دو و ری اکت: قیام میکنند">
+                                        <div class="banner-wrapper-content">
+                                            <h1 class="h2">آنگولار دو و ری اکت: قیام میکنند</h1>
+                                            <span class="category-tag category-tag-yellow">جاوا اسکریپت</span>
+                                            <time datetime="2016-03-01" class="">14 اردیبهشت 97</time>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-12">
+                                <div class="banner-wrapper">
+                                    <a href="#" title="پایان سی اس اس جهانی">
+                                        <div class="banner-wrapper-content">
+                                            <h1 class="h2">پایان سی اس اس جهانی</h1>
+                                            <span class="category-tag category-tag-green">گرافیک</span>
+                                            <time datetime="2016-03-01" class="">14 اردیبهشت 97</time>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-12">
+                                <div class="banner-wrapper">
+                                    <a href="#" title="ساختن فریموورک سی اس اس">
+                                        <div class="banner-wrapper-content">
+                                            <h1 class="h2">ساختن فریموورک سی اس اس</h1>
+                                            <span class="category-tag category-tag-blue">سی اس اس</span>
+                                            <time datetime="2016-03-01" class="">14 اردیبهشت 97</time>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ARTICLE BOTTOM INFO COMMENTS -->
+            <section class="articles-info-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-12">
+                            <h1 class="articles-info-section-title">پاسخ <span class="italic">(7)</span></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-12">
+                            <div class="comments">
+                                <!-- WRITE NEW COMMENT -->
+                                <a title="" href="#" class="light-link comment button-comment">
+                                    <span class="button-comment-span"><i class="pe-7s-comment"></i> نوشتن یک پاسخ</span>
+                                </a>
+                                <!-- COMMENTS LIST -->
+                                <ol>
+                                    <li>
+                                        <div class="comment">
+                                            <img src="img/profile-picture5.png" alt="Profile Picture" data-rjs="2">
+                                            <div class="comment-content">
+                                                <h3>محمد یاری</h3>
+                                                <time datetime="2009-11-13T20:00Z">14 اردیبهشت 97 10:36 ب.ظ</time>
+                                                <p>
+                                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                                    استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
+                                                    ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز
+                                                </p>
+                                                <div class="comment-content-footer">
+                                                    <button class="btn btn-small"><a href="#" title="Watch it">پاسخ</a>
+                                                    </button>
+                                                    <a title="Likes" href="#"
+                                                       class="light-link comment-content-footer-icon"><i
+                                                            class="pe-7s-like"></i> 0</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ol class="comment-response">
+                                            <li>
+                                                <div class="comment">
+                                                    <img src="img/profile-picture6.png" alt="Profile Picture"
+                                                         data-rjs="2">
+                                                    <div class="comment-content">
+                                                        <h3>وحید یاری</h3>
+                                                        <time datetime="2009-11-13T20:00Z">14 اردیبهشت 97 10:36 ب.ظ
+                                                        </time>
+                                                        <p><span class="italic">@محمد یاری </span>استفاده از طراحان
+                                                            گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                                            سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیا :)
+                                                        </p>
+                                                        <div class="comment-content-footer">
+                                                            <button class="btn btn-small"><a href="#" title="Watch it">پاسخ</a>
+                                                            </button>
+                                                            <a title="Likes" href="#"
+                                                               class="light-link comment-content-footer-icon"><i
+                                                                    class="pe-7s-like"></i>
+                                                                3</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <!-- WRITE RESPONSE -->
+                                            <li>
+                                                <a title="" href="#" class="light-link comment button-comment-center">
+                                       <span class="button-comment-text">نمایش پاسخ های بیشتر <i
+                                               class="pe-7s-angle-down button-comment-text-right-icon"></i></span>
+                                                </a>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li class="comment">
+                                        <img src="img/profile-picture7.png" alt="Profile Picture" data-rjs="2">
+                                        <div class="comment-content">
+                                            <h3>بهنام یاری</h3>
+                                            <time datetime="2009-11-13T20:00Z">14 اردیبهشت 97 10:36 ب.ظ</time>
+                                            <p>سایت بسیار زیبایی است، خیلی به من کمک کرد</p>
+                                            <div class="comment-content-footer">
+                                                <button class="btn btn-small"><a href="#" title="Watch it">پاسخ</a>
+                                                </button>
+                                                <a title="Likes" href="#"
+                                                   class="light-link comment-content-footer-icon"><i
+                                                        class="pe-7s-like"></i> 124</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- end ARTICLE BOTTOM INFO -->
+    </main>
+    <!-- end MAIN -->
+{% endblock %}
