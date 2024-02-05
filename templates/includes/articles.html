@@ -24,16 +24,18 @@
                     <h1><a href="{{ article.get_absolute_url }}" title="{{ article.title }}">{{ article.title }}</a>
                     </h1>
                     <p>
-                        {{ article.body|slice:85 }}
+                        {{ article.body|slice:250|safe }}
                     </p>
                 </div>
                 <div class="articles-footer">
                     <ul class="articles-footer-info">
-                        <li><a href="#" class="light-link" title=""><i class="pe-7s-like"></i> 1221</a></li>
+                        {{ article.likes.count }}
+                        <i class="light-link" style=""><i class="fa-regular fa-heart fa-xl pl-2"
+                                                          style="color: #626363;"></i></i></a>
                         <li><a href="#" class="light-link" title=""><i class="pe-7s-comment"></i> 7 پاسخ</a>
                         </li>
                     </ul>
-                    <a title="" class="btn" href="blog_post.html">ادامه مطلب</a>
+                    <a title="" class="btn" href="{{ article.get_absolute_url }}">ادامه مطلب</a>
 
                 </div>
             </article>

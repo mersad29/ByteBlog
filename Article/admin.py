@@ -8,3 +8,9 @@ class ArticleAdmin(admin.ModelAdmin):
 @admin.register(models.Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title',)
+
+@admin.register(models.Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'created_at')
+
+admin.site.register(models.Like)

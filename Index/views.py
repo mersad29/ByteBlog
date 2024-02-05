@@ -1,9 +1,9 @@
 from django.core.paginator import Paginator
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.views.generic import View, TemplateView
-from Article.models import Article, Category
+from Article.models import Article, Category, Like
 
 
 def index(request):
@@ -21,5 +21,14 @@ def index(request):
     context = {
         'articles': objects_list,
         'categories': categories,
+        'like': like,
     }
     return render(request, 'index.html', context)
+
+def like(request, slug, pk):
+    try:
+        like = Like.objects.get(article__slug=slug)
+        like.delete()
+    except:
+        Like.objects.create(article_id=pk)
+    return redirect('index:index')
