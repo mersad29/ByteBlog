@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tz %}
+
+{% block content %}
+    <!-- MAIN -->
+    <main>
+
+
+        <div class="container">
+            <div class="row">
+
+                <!-- CATEGORY TITLE -->
+                <div class="col-12">
+                    <section class="category-title">
+                        <h1>{{ category.title }}</h1>
+                        <span>{{ articles.count }} مقاله</span>
+                    </section>
+                </div>
+                <!-- end CATEGORY TITLE -->
+
+                <!-- ARTICLES -->
+                <div class="col-lg-8 col-12">
+                    <section class="articles">
+
+
+                        <!-- IMAGE ARTICLE -->
+                        {% for article in articles %}
+                            <article class="green-article">
+                                {% if article.image %}
+                                    <img class="articles-preview-img" src="{{ article.image.url }}" alt="{{ article.image }}" title=""
+                                         data-rjs="2">
+                                {% endif %}
+                                <div class="articles-header">
+                                    {% if article.time_difference < 24 %}
+                                        <time datetime="2016-10-11">{{ article.time_difference }}ساعت پیش</time>
+                                        <span class="articles-header-tag-blue">داغ</span>
+                                    {% else %}
+                                        <time datetime="2016-10-11">{{ article.created_time|timezone:"Asia/Tehran" }}</time>
+                                    {% endif %}
+
+                                    <span class="articles-header-category"><a href="#" class="blue" title="">
+                        {% for category in article.category.all %}
+                            {{ category.title }}
+                            {% if not forloop.last %},
+                            {% endif %}
+                        {% endfor %}
+                    </a></span>
+                                </div>
+                                <div class="articles-content">
+                                    <h1><a href="{{ article.get_absolute_url }}"
+                                           title="{{ article.title }}">{{ article.title }}</a>
+                                    </h1>
+                                    <p>
+                                        {{ article.body|slice:250|safe }}...
+                                    </p>
+                                </div>
+                                <div class="articles-footer">
+                                    <ul class="articles-footer-info">
+                                        {{ article.likes.count }}
+                                        <i class="light-link" style=""><i class="fa-regular fa-heart fa-xl pl-2"
+                                                                          style="color: #626363;"></i></i></a>|
+                                        <li><a href="#" class="light-link" title=""><i class="pe-7s-comment"></i> 7 پاسخ</a>
+                                        </li>
+                                    </ul>
+                                    <a title="" class="btn" href="{{ article.get_absolute_url }}">ادامه مطلب</a>
+
+                                </div>
+                            </article>
+                        {% endfor %}
+
+                        <!-- PAGINATION -->
+                        {% include 'includes/pagination.html' %}
+
+                    </section>
+                </div>
+
+                <!-- AUTHOR -->
+                {% include 'includes/left-navbar.html' %}
+            </div>
+        </div>
+    </main>
+    <!-- end MAIN -->
+{% endblock %}

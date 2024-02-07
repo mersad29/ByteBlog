@@ -1,74 +1,469 @@
 {% load static %}
 
-
 <section class="banners">
     <div class="container">
         <div class="row">
-
-            <div class="col-md-6 col-12">
-                <div class="banner-wrapper">
-                    <a href="blog_post.html" title="بالا بردن مهارت در سی اس اس">
-                        <div class="banner-wrapper-content">
-                            <h1 class="h2">یادگیری سی اس اس</h1>
-                            <span class="category-tag category-tag-white">سی اس اس</span>
-                            <time datetime="2016-01-18" class="">14 اردیبهشت 97</time>
-                        </div>
-                    </a>
-                    <img class="img-fluid" src="{% static "img/photo1.jpg" %}" alt="عکس پست" data-rjs="2">
+            {{ header_title.title }}
+            {% if article_count == 1 %}
+                <div class="col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.0.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-md-6 col-12">
-                <div class="banner-wrapper">
-                    <a href="blog_post.html" title="توسعه و پیشرفت گوگل">
-                        <div class="banner-wrapper-content">
-                            <h1 class="h2">توسعه و پیشرفت گوگل</h1>
-                            <span class="category-tag category-tag-white">گرافیک</span>
-                            <time datetime="2016-01-18" class="">14 اردیبهشت 97</time>
-                        </div>
-                    </a>
-                    <img class="img-fluid" src="{% static "img/photo2.jpg" %}" alt="عکس پست" data-rjs="2">
+                <div class="col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class=""></time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class="banner-wrapper">
-                    <a href="blog_post.html" title="آنگولار دو و جاوا اسکریپت">
-                        <div class="banner-wrapper-content">
-                            <h1 class="h2">آنگولار دو و جاوا اسکریپت</h1>
-                            <span class="category-tag category-tag-white">جاوا اسکریپت</span>
-                            <time datetime="2016-03-01" class="">14 اردیبهشت 97</time>
-                        </div>
-                    </a>
-                    <img class="img-fluid" src="{% static "img/photo3.jpg" %}" alt="عکس پست" data-rjs="2">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.0.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class="banner-wrapper">
-                    <a href="blog_post.html" title="طراحی سی اس اس نهایی">
-                        <div class="banner-wrapper-content">
-                            <h1 class="h2">طراحی سی اس اس نهایی</h1>
-                            <span class="category-tag category-tag-white">اچ تی ام ال</span>
-                            <time datetime="2016-01-18" class="">14 اردیبهشت 97</time>
-                        </div>
-                    </a>
-                    <img class="img-fluid" src="{% static "img/photo4.jpg" %}" alt="عکس پست" data-rjs="2">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.0.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class="banner-wrapper">
-                    <a href="blog_post.html" title="ساختن فریموورک سی اس اس">
-                        <div class="banner-wrapper-content">
-                            <h1 class="h2">ساختن فریموورک سی اس اس</h1>
-                            <span class="category-tag category-tag-white">سی اس اس</span>
-                            <time datetime="2016-01-18" class="">14 اردیبهشت 97</time>
-                        </div>
-                    </a>
-                    <img class="img-fluid" src="{% static "img/photo5.jpg" %}" alt="عکس پست" data-rjs="2">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.0.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
                 </div>
-            </div>
+
+            {% elif article_count == 2 %}
+                <div class="col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.0.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.1.get_absolute_url }}" title="{{ all_articles.1.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.1.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.1.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.1.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.1.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.0.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.0.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.0.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+
+            {% elif article_count == 3 %}
+                <div class="col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.0.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.1.get_absolute_url }}" title="{{ all_articles.1.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.1.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.1.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.1.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.1.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.2.get_absolute_url }}" title="{{ all_articles.2.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.2.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.2.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.2.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.2.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.0.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.0.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+
+            {% elif article_count == 4 %}
+                <div class="col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.0.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.1.get_absolute_url }}" title="{{ all_articles.1.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.1.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.1.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.1.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.1.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.2.get_absolute_url }}" title="{{ all_articles.2.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.2.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.2.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.2.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.2.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.3.get_absolute_url }}" title="{{ all_articles.3.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.3.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.3.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.3.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.3.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.3.get_absolute_url }}" title="{{ all_articles.3.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.3.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.3.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.3.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.3.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+
+            {% elif article_count == 5 %}
+                <div class="col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.0.get_absolute_url }}" title="{{ all_articles.0.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.0.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.0.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.0.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.0.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.1.get_absolute_url }}" title="{{ all_articles.1.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.1.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.1.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.1.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.1.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.2.get_absolute_url }}" title="{{ all_articles.2.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.2.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.2.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.2.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.2.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.3.get_absolute_url }}" title="{{ all_articles.3.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.3.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.3.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.3.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.3.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="banner-wrapper">
+                        <a href="{{ all_articles.4.get_absolute_url }}" title="{{ all_articles.4.title }}">
+                            <div class="banner-wrapper-content">
+                                <h1 class="h2">{{ all_articles.4.title }}</h1>
+                                <span class="category-tag category-tag-white">
+                                        {% for category in all_articles.4.category.all %}
+                                            {{ category.title }}
+                                            {% if not forloop.last %},
+                                            {% endif %}
+                                        {% endfor %}
+                                </span>
+                                <time datetime="2016-01-18" class="">{{ all_articles.4.created_time }}</time>
+                            </div>
+                        </a>
+                        <img class="img-fluid" src="{{ all_articles.4.image.url }}" alt="عکس پست" data-rjs="2">
+                    </div>
+                </div>
+            {% endif %}
 
         </div>
     </div>

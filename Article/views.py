@@ -12,7 +12,7 @@ def ArticleDetailView(request, slug):
         parent = request.POST.get('parent')
         Comment.objects.create(article=articles, name=name, body=body, parent_id=parent)
 
-    if like.filter(article__slug=slug):
+    if like.filter(article__slug=articles.slug, article_id=articles.id):
         liked = True
     else:
         liked = False

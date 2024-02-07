@@ -2,66 +2,73 @@
 
 
 <header class="navbar-fixed-top">
-        <div class="container">
-           <div class="row">
-              <!-- HEADER TOP -->
-              <div class="col-lg-12">
-                 <div class="header-top">
+    <div class="container">
+        <div class="row">
+            <!-- HEADER TOP -->
+            <div class="col-lg-12">
+                <div class="header-top">
                     <div class="header-top-logo">
-                       <a href="index.html" title="لوگو"><img src="{% static "img/logo.png" %}" alt="لوگو" data-rjs="2"></a>
+                        <a href="index.html" title="لوگو"><img src="{% static "img/logo.png" %}" alt="لوگو"
+                                                               data-rjs="2"></a>
                     </div>
                     <div class="header-top-text">
-                       <p><span class="font-italic">“جاوا اسکریپت مدرن”</span>
-                          کتاب در دسترس است! <a href="shop.html" title="کتاب جاوا اسکریپت مدرن">صفحه پرداخت<i class="pe-7s-angle-left"></i></a>
-                       </p>
+                        <p>
+                            {% for text in header_title %}
+                                {{ text.title|safe }}
+                            {% endfor %}
+                        </p>
                     </div>
                     <nav class="header-top-nav">
-                       <ul>
-                          <li class="header-top-nav-search">
-                             <a href="#" class="light-link" title="جستجو کردن"><i class="pe-7s-search"></i></a>
-                             <form action="#" method="get">
-                                <input type="text" class="form-control" placeholder="جستجو کردن...">
-                                <button type="submit"><i class="pe-7s-search"></i></button>
-                             </form>
-                          </li>
-                          <li>
-                             <a href="#" class="light-link" title="منو">
-                                <div id="menu-animate-icon" class="header-top-nav-menu-icon">
-                                   <span></span>
-                                   <span></span>
-                                   <span></span>
-                                </div>
-                             </a>
-                          </li>
-                       </ul>
+                        <ul>
+                            <li class="header-top-nav-search">
+                                <a href="#" class="light-link" title="جستجو کردن"><i class="pe-7s-search"></i></a>
+                                <form action="#" method="get">
+                                    <input type="text" class="form-control" placeholder="جستجو کردن...">
+                                    <button type="submit"><i class="pe-7s-search"></i></button>
+                                </form>
+                            </li>
+                            <li>
+                                <a href="#" class="light-link" title="منو">
+                                    <div id="menu-animate-icon" class="header-top-nav-menu-icon">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </nav>
-                 </div>
-              </div>
-              <!-- end HEADER TOP -->
-              <!-- HEADER NAVIGATION -->
-              <div class="col-lg-12">
-                 <nav class="header-nav">
+                </div>
+            </div>
+            <!-- end HEADER TOP -->
+            <!-- HEADER NAVIGATION -->
+            <div class="col-lg-12">
+                <nav class="header-nav">
                     <ul>
-                       <li><a href="index.html" title="صفحه اصلی">صفحه اصلی</a></li>
-                       <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" title="مقالات وبلاگ">مقالات وبلاگ</a>
-                          <ul class="dropdown-menu">
-                             <li class="nav-elipse-blue"><a href="blog_list.html" title="مقالات سی اس اس وبلاگ">سی اس اس</a></li>
-                             <li class="nav-elipse-red"><a href="blog_list.html" title="مقالات اچ تی ام ال وبلاگ">اچ تی ام ال</a></li>
-                             <li class="nav-elipse-yellow"><a href="blog_list.html" title="مقالات جاوا اسکریپت وبلاگ">جاوا اسکریپت</a></li>
-                             <li class="nav-elipse-green"><a href="blog_list.html" title="مقالات گرافیک وبلاگ">گرافیک</a></li>
-                             <li><a href="blog_post.html" title="وبلاگ پست">وبلاگ پست</a></li>
-                          </ul>
-                       </li>
-                       <li><a href="about_me.html" title="درباره من">درباره من</a></li>
-                       <li><a href="portfolio.html" title="پروژه های من">پروژه های من</a></li>
-                       <li><a href="contact.html" title="ارتباط با من">ارتباط با من</a></li>
-                       <li class="buyproducts-link"><a href="shop.html" title="خرید محصولات">خرید محصولات</a></li>
+                        <li><a href="{% url 'index:index' %}" title="صفحه اصلی">صفحه اصلی</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" title="مقالات وبلاگ">مقالات وبلاگ</a>
+                            <ul class="dropdown-menu">
+                                {% for category in all_categories %}
+                                    <li class="nav-elipse-blue"><a href="{% url 'index:article_list' category.id %}"
+                                                                   title="{{ category.title }}">
+                                        {{ category.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'index:about_me' %}" title="درباره من">درباره من</a></li>
+{#                        <li><a href="#" title="پروژه های من">پروژه های من</a></li>#}
+                        <li><a href="{% url 'index:contact_us' %}" title="ارتباط با من">ارتباط با من</a></li>
+                        <li></li>
+                        <a class="float-left" style="color: #ff0500; font-size: x-small">بزودی</a>
+                        <li class="buyproducts-link"><a href="" title="خرید محصولات">خرید محصولات</a></li>
+
+
                     </ul>
-                 </nav>
-              </div>
-           </div>
-           <!-- end HEADER NAVIGATION -->
+                </nav>
+            </div>
         </div>
-     </header>
-     <!-- end HEADER -->
+        <!-- end HEADER NAVIGATION -->
+    </div>
+</header>
+<!-- end HEADER -->

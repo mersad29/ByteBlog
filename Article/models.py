@@ -31,7 +31,7 @@ class Article(models.Model):
     def save(
             self, force_insert=False, force_update=False, using=None, update_fields=None
     ):
-        self.slug = slugify(self.title)
+        # self.slug = slugify(self.title)
         super(Article, self).save()
 
     class Meta:
@@ -39,7 +39,7 @@ class Article(models.Model):
         verbose_name_plural = 'مقالات'
 
     def __str__(self):
-        return f"{self.title} - {self.author} - {self.created_time} - {self.category}"
+        return f"{self.title} - {self.author} - {self.created_time}"
 
 
 class Like(models.Model):
@@ -51,7 +51,8 @@ class Like(models.Model):
         verbose_name_plural = 'لایک ها'
 
     def __str__(self):
-         return self.created_at
+        return self.created_at
+
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='comments', verbose_name='مقاله')

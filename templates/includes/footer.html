@@ -1,75 +1,52 @@
 {% load static %}
 
-<footer>
-        <div class="container">
-           <div class="row">
-              <div class="col-md-4 col-12">
-                 <div class="footer-section">
-                    <h3>آخرین پاسخ ها</h3>
-                    <ul class="footer-section-content">
-                       <li class="footer-section-content-response">
-                          <img src="{% static 'img/profile-picture2.png' %}" alt="Profile Picture" data-rjs="2">
-                          <div class="footer-section-content-response-wrapper">
-                             <h4><span class="response-author">جبران خلیل جبران</span> در <a href="#" class="response-subject light-link"
-                                title="Subject Response">رفتن به سوی
-                                جاوا اسکریپت 2016؟</a>
-                             </h4>
-                             <p class="font-primary">دوستش دارم، کار کردن باهاش خیلی خوبه!!!</p>
-                          </div>
-                       </li>
-                    </ul>
-                 </div>
-              </div>
-              <div class="col-md-4 col-12">
-                 <div class="footer-section">
-                    <h3>آخرین توئیت ها</h3>
-                    <ul class="footer-section-content">
-                       <li class="footer-section-content-twitt">
-                          <h4><a href="#" title="microsoft">@microsoft</a></h4>
-                          <time datetime="">3 روز قبل</time>
-                          <p class="font-primary">او پنجاه شنا رفت، در پنجاه روز، واقعا شگفت انگیزه <a href="#" title="" class="light-link">http://msft.it/Melissa</a>
-                          </p>
-                       </li>
-                    </ul>
-                 </div>
-              </div>
-              <div class="col-md-4 col-12">
-                 <div class="footer-section border-bottom">
-                    <img src="{% static 'img/logo-grey.png' %}" alt="لوگو" class="footer-section-title-img" data-rjs="2">
-                    <div class="footer-section-content">
-                       <p class="font-primary footer-section-content-about">
-                          قالب دی بلاگ زیبا و واکنش گرا <span class="black">خلاق و منحصر به فرد</span> بهترین قالب ورد پرس برای وبلاگ و
-                          نمونه کار نمایش محصولات. آن است بله!
-                          به راحتی قابل استفاده است, <span class="black">سئو شده</span> طراحی شده توسط کدهای استاندارد.
-                       </p>
+<footer style="padding-top: 5px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="pt-4">
+                    <div class="">
+                        <img src="{% static 'img/logo-grey.png' %}" alt="لوگو" class="footer-section-title-img pb-3" data-rjs="2">
+                        <div class="">
+                            <p class="font-primary footer-section-content-about">
+                                {% for text in footer_description %}
+                                    {{ text|safe }}
+                                {% endfor %}
+                            </p>
+                        </div>
                     </div>
-                 </div>
-                 <div class="footer-section">
-                    <h3 class="footer-section-newsletter">خبرنامه</h3>
+                </div>
+            </div>
+        <div class="footer-section pr-3">
+                    <h3 class="footer-section-newsletter bg-light rounded">خبرنامه الکترونیکی</h3>
                     <div class="footer-section-content">
-                       <p class="font-primary ">برای ارسال اتوماتیک پست ها، در خبرنامه ما عضو شوید:</p>
-                       <form action="#" method="">
-                          <input type="text" class="form-control" placeholder="ایمیل خود را تایپ کنید">
+                       <p class="font-primary ">اگه میخوای از مطالب جدید اینجا مطلع بشی ایمیلتو وارد کن:</p>
+                       <form class="d-flex" action="" method="post">
+                          <input type="text" class="form-control w-75" placeholder="ایمیل خود را تایپ کنید">
+                          <a href="#" title="Watch it" class="btn btn-small mr-5">ارسال</a>
                        </form>
                     </div>
                  </div>
-              </div>
-           </div>
         </div>
-        <!-- COPYRIGHT -->
-        <div class="container">
-           <div class="row">
-              <div class="col-12">
-                 <div class="copyright">
+    </div>
+    <!-- COPYRIGHT -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="copyright">
                     <ul>
-                       <li><a href="#" title="Twitter"><i class="icon-social_twitter_circle"></i></a></li>
-                       <li><a href="#" title="Github"><i class="icon-social_github_circle"></i></a></li>
-                       <li><a href="#" title="LinkedIn"><i class="icon-social_linkedin_circle"></i></a></li>
+                        <li><a href="#" title="Twitter"><i class="icon-social_twitter_circle"></i></a></li>
+                        <li><a href="#" title="Github"><i class="icon-social_github_circle"></i></a></li>
+                        <li><a href="#" title="LinkedIn"><i class="icon-social_linkedin_circle"></i></a></li>
                     </ul>
-                    <p class="font-primary">&copy; طراحی شده توسط <a href="https://www.rtl-theme.com/user-profile/mhd-yari021/" title="" class="black">محمد یاری</a></p>
-                 </div>
-              </div>
-           </div>
+                    <p class="font-primary">&copy; برنامه نویسی شده توسط <a
+                            href="" title="" class="black"
+                            style="font-family: 'Microsoft Sans Serif', Tahoma, Arial, Verdana, Sans-Serif">
+                        M9rsad
+                    </a></p>
+                </div>
+            </div>
         </div>
-        <!-- end COPYRIHT -->
-     </footer>
+    </div>
+    <!-- end COPYRIHT -->
+</footer>

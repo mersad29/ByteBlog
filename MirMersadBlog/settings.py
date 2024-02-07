@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-3h5xt#((u$q-!p1agb4b@3i!oct+u)kjn=b3q1efd74*z_z2iv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     #libs
     'django_render_partial',
     'ckeditor',
-    'django_social_share'
+    'django_social_share',
+    'django_cleanup',
 ]
 
 # CKEditor_setting
@@ -84,7 +85,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'context_processors.context_processors.user_detail'
+                'context_processors.context_processors.all_categories',
+                'context_processors.context_processors.all_articles',
+                'context_processors.context_processors.header',
+                'context_processors.context_processors.footer',
             ],
         },
     },
@@ -152,8 +156,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "assets")]
-
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

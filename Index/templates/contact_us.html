@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- MAIN -->
+    <main>
+        <div class="container">
+            <main class="row">
+
+                <!-- Details informations -->
+                <div class="col-12">
+                    <section class="contact two-column-inside white-box">
+                        <div class="contact-me">
+                            <h2>ارتباط با من</h2>
+                            <ul>
+                                <li>
+                                    <i class="pe-7s-mail"></i>
+                                    <div class="contact-me-right">
+                                        <p>{{ user.email }}</p>
+                                        <span class="contact-me-right-desc">ایمیل</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="pe-7s-call"></i>
+                                    <div class="contact-me-right">
+                                        <p>{{ user.phone }}</p>
+                                        <span class="contact-me-right-desc">تلفن</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="get-in-touch">
+                            <h2>با ما در ارتباط باشید</h2>
+                            <p class="font-primary">اگه سوال یا پیشنهادی داری خوشحال میشم بشنوم</p>
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <input class="col-12 form-control" type="text" placeholder="نام" name="name">
+                                <input class="col-12 form-control" type="email" placeholder="ایمیل" name="email">
+                                <textarea class=" col-12 form-control" id="body" rows="6" placeholder="پرسش"
+                                          name="body"></textarea>
+                                <button type="submit" class="btn mt-3"><i class="pe-7s-paper-plane"></i> ارسال</button>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+        </div>
+    </main>
+
+{% endblock %}
