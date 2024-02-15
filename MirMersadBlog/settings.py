@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 
+import dj_database_url
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,7 +51,7 @@ INSTALLED_APPS = [
     #libs
     'django_render_partial',
     'ckeditor',
-    'django_social_share',
+    # 'django_social_share',
     'django_cleanup',
 ]
 
@@ -100,26 +105,31 @@ WSGI_APPLICATION = 'MirMersadBlog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+DATABASES = {
+    'default': dj_database_url.config(default='postgresql://root:WbxgG3UoVEQqZnLHjWt6a4vu@sahand.liara.cloud:30743/postgres')
+}
+
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mersadblog',
+#         'USER': 'postgres',
+#         'PASSWORD': 'mergooder98',
+#         'HOST': 'localhost',   # Set to the PostgreSQL server's address
+#         'PORT': '5432',        # Default PostgreSQL port
 #     }
 # }
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mersadblog',
-        'USER': 'postgres',
-        'PASSWORD': 'mergooder98',
-        'HOST': 'localhost',   # Set to the PostgreSQL server's address
-        'PORT': '5432',        # Default PostgreSQL port
-    }
-}
-
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mersadblog',
+#         'USER': 'root',
+#         'PASSWORD': 'WbxgG3UoVEQqZnLHjWt6a4vu',
+#         'HOST': 'sahand.liara.cloud',   # Set to the PostgreSQL server's address
+#         'PORT': '30743',        # Default PostgreSQL port
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -157,6 +167,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "assets")]
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Default primary key field type
