@@ -22,9 +22,9 @@
                         <ul>
                             <li class="header-top-nav-search">
                                 <a href="#" class="light-link" title="جستجو کردن"><i class="pe-7s-search"></i></a>
-                                <form action="#" method="get">
-                                    <input type="text" class="form-control" placeholder="جستجو کردن...">
-                                    <button type="submit"><i class="pe-7s-search"></i></button>
+                                <form action="{% url 'index:search' %}" method="get">
+                                    <input type="text" class="form-control" name="q" placeholder="جستجو کردن...">
+                                    <button href="" type="submit"><i class="pe-7s-search"></i></button>
                                 </form>
                             </li>
                             <li>

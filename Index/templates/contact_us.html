@@ -11,22 +11,24 @@
                     <section class="contact two-column-inside white-box">
                         <div class="contact-me">
                             <h2>ارتباط با من</h2>
-                            <ul>
-                                <li>
-                                    <i class="pe-7s-mail"></i>
-                                    <div class="contact-me-right">
-                                        <p>{{ user.email }}</p>
-                                        <span class="contact-me-right-desc">ایمیل</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="pe-7s-call"></i>
-                                    <div class="contact-me-right">
-                                        <p>{{ user.phone }}</p>
-                                        <span class="contact-me-right-desc">تلفن</span>
-                                    </div>
-                                </li>
-                            </ul>
+                            {% for user in admin_user %}
+                                <ul>
+                                    <li>
+                                        <i class="pe-7s-mail"></i>
+                                        <div class="contact-me-right">
+                                            <p>{{ user.email }}</p>
+                                            <span class="contact-me-right-desc">ایمیل</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <i class="pe-7s-call"></i>
+                                        <div class="contact-me-right">
+                                            <p>{{ user.phone }}</p>
+                                            <span class="contact-me-right-desc">تلفن</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            {% endfor %}
                         </div>
                         <div class="get-in-touch">
                             <h2>با ما در ارتباط باشید</h2>

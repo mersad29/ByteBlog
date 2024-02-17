@@ -3,33 +3,35 @@
 
 {% block content %}
     <!-- MAIN -->
-<main>
-    <div class="container">
-        <div class="row">
+    <main>
+        <div class="container">
+            <div class="row">
 
-            <!-- General informations -->
-            <div class="col-12">
-                <section class="general-info white-box">
-                    <div class="author">
-                        <img src="{{ user.image }}" alt="" data-rjs="2">
-                        <ul class="author-nav">
-                            <li><a href="#" title=""><i class="pe-7s-paper-plane"></i> ارسال پیغام</a></li>
-                        </ul>
-                    </div>
-                    <div class="general-info-right">
-                        <h1>من مرصاد میر هستم</h1>
-                        <div class="social">
-                            <a href="#" title="Twitter"><i class="icon-social_twitter_circle"></i></a>
-                            <a href="#" title="Github"><i class="icon-social_github_circle"></i></a>
-                            <a href="#" title="LinkedIn"><i class="icon-social_linkedin_circle"></i></a>
-                        </div>
-                        <div class="clear"></div>
-                        <span class="general-info-right-author-info">برنامه نویس و توسعه دنده وب</span>
-                        <p>
-                            {{ user.about_me }}
-                        </p>
-                        <img src="" alt="" title="Author Signature" data-rjs="2">
-                    </div>
-                </section>
-            </div>
+                <!-- General informations -->
+                <div class="col-12">
+                    {% for user in admin_user %}
+                        <section class="general-info white-box">
+                            <div class="author">
+                                <img src="{{ user.image }}" alt="" data-rjs="2">
+                                <ul class="author-nav">
+                                    <li><a href="{% url 'index:contact_us' %}" title=""><i class="pe-7s-paper-plane"></i> ارسال پیغام</a></li>
+                                </ul>
+                            </div>
+                            <div class="general-info-right">
+                                <h1>من مرصاد میر هستم</h1>
+                                <div class="social">
+                                    <a href="#" title="Twitter"><i class="icon-social_twitter_circle"></i></a>
+                                    <a href="#" title="Github"><i class="icon-social_github_circle"></i></a>
+                                    <a href="#" title="LinkedIn"><i class="icon-social_linkedin_circle"></i></a>
+                                </div>
+                                <div class="clear"></div>
+                                <span class="general-info-right-author-info">برنامه نویس و توسعه دنده وب</span>
+                                <p>
+                                    {{ user.about_me|safe }}
+                                </p>
+                                <img src="" alt="" title="Author Signature" data-rjs="2">
+                            </div>
+                        </section>
+                    {% endfor %}
+                </div>
 {% endblock %}

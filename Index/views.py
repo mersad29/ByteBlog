@@ -1,6 +1,5 @@
 from django.core.paginator import Paginator
-from django.shortcuts import render, redirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.views.generic import View, TemplateView
 from Article.models import Article, Category, Like
@@ -52,4 +51,17 @@ def about_me(request):
     return render(request, 'about-me.html')
 
 def contact_us(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        body = request.POST.get('body')
+        created_at = request.POST.get('created_at')
+        models.Inbox.objects.create(name=name, email=email, body=body, created_at=created_at)
+
     return render(request, 'contact_us.html')
+
+def search(request):
+    q = request.GET.get('q')
+    articles = Article.objects.filter(title__icontains=q)
+
+    return render(request, 'article_list.html', {'articles': articles})

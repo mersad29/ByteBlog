@@ -2,17 +2,21 @@
 
 <div class="aside-blocks col-lg-4 col-12">
     <aside class="author">
-        <img src="{{ user.image }}" alt="" data-rjs="2">
-        <h2>{{ user.f_name }}{{ user.l_name }}</h2>
-        <span class="author-info">دوست رجبی</span>
-        <span class="author-info">توسعه دهنده وب</span>
-        <span class="author-info">دانشجوی مهندسی کامپیوتر</span>
-        <div class="social">
-            <a href="{{ user.telegram }}" title="Instagram" target="_blank"><i class="icon-social_instagram_circle"></i></a>
-            <a href="{{ user.github }}" title="Github" target="_blank"><i class="icon-social_github_circle"></i></a>
-            <a href="{{ user.linkedin }}" title="LinkedIn" target="_blank"><i
-                    class="icon-social_linkedin_circle"></i></a>
-        </div>
+        {% for user in admin_user %}
+            <img src="{{ user.image.url }}" alt="" data-rjs="2">
+            <h2>{{ user.f_name }}{{ user.l_name }}</h2>
+            <span class="author-info">دوست رجبی</span>
+            <span class="author-info">توسعه دهنده وب</span>
+            <span class="author-info">دانشجوی مهندسی کامپیوتر</span>
+            <div class="social">
+                <a href="{{ user.instagram }}" title="Instagram" target="_blank"><i
+                        class="icon-social_instagram_circle"></i></a>
+                <a href="{{ user.github }}" title="Github" target="_blank"><i
+                        class="icon-social_github_circle"></i></a>
+                <a href="{{ user.linkedin }}" title="LinkedIn" target="_blank"><i
+                        class="icon-social_linkedin_circle"></i></a>
+            </div>
+        {% endfor %}
         <ul class="author-nav">
             <li><a href="{% url 'index:contact_us' %}" title=""><i class="pe-7s-comment"></i> ارتباط با من</a></li>
         </ul>

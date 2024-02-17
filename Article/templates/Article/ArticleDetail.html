@@ -1,32 +1,38 @@
 {% extends 'base.html' %}
-{% load social_share %}
+{#{% load social_share %}#}
 {% load static %}
 {% load tz %}
 
 {% block content %}
-    <!-- NEXT AND PREVIOUS ARTICLES -->
-    <div class="article-nav">
-        <ul>
-            <li>
-                <a href="#" class="next-article" title="پست بعدی">
-                    <i class="pe-7s-angle-right"></i>
-                    <div>
-                        <p>پست بعدی</p>
-                        <h3>جاوا اسکریپت 2016</h3>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="previous-article" title="پست قبلی">
-                    <i class="pe-7s-angle-left"></i>
-                    <div>
-                        <p>پست قبلی</p>
-                        <h3>نارنجی ی رنگ سیاه</h3>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </div>
+    {#    <!-- NEXT AND PREVIOUS ARTICLES -->#}
+    {#        <div class="article-nav">#}
+    {#            <ul>#}
+    {#                {% if next_article %}#}
+    {#                    <li>#}
+    {#                        <a href="{% url 'Articles:article_detail' next_article.slug %}" class="next-article"#}
+    {#                           title="پست بعدی">#}
+    {#                            <i class="pe-7s-angle-right"></i>#}
+    {#                            <div>#}
+    {#                                <p>پست بعدی</p>#}
+    {#                                <h6>{{ next_article.title|slice:45 }}...</h6>#}
+    {#                            </div>#}
+    {#                        </a>#}
+    {#                    </li>#}
+    {#                {% endif %}#}
+    {##}
+    {#                {% if prev_article %}#}
+    {#                    <li>#}
+    {#                        <a href="" class="previous-article" title="پست قبلی">#}
+    {#                            <i class="pe-7s-angle-left"></i>#}
+    {#                            <div>#}
+    {#                                <p>پست قبلی</p>#}
+    {#                                <h5>{{ prev_article.title|slice:45 }}...</h5>#}
+    {#                            </div>#}
+    {#                        </a>#}
+    {#                    </li>#}
+    {#                {% endif %}#}
+    {#            </ul>#}
+    {#        </div>#}
     <!-- MAIN -->
     <main>
         <!-- ARTICLE BLOG POST -->
@@ -63,17 +69,17 @@
                             </div>
                         </div>
                         <!-- SHARE THIS BLOCK -->
-{#                        <div class="col-lg-2 col-12">#}
-{#                            <div class="articles-blog-post-share">#}
-{#                                <h3>اشتراک گذاری</h3>#}
-{#                                <div>#}
-{#                                    <ul>#}
-{#                                        {% post_to_telegram '{{ articles.title }}' %}#}
-{#                                        {% post_to_linkedin 's' 's' %}#}
-{#                                    </ul>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
+                        {#                        <div class="col-lg-2 col-12">#}
+                        {#                            <div class="articles-blog-post-share">#}
+                        {#                                <h3>اشتراک گذاری</h3>#}
+                        {#                                <div>#}
+                        {#                                    <ul>#}
+                        {#                                        {% post_to_telegram '{{ articles.title }}' %}#}
+                        {#                                        {% post_to_linkedin 's' 's' %}#}
+                        {#                                    </ul>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                        </div>#}
                     </div>
                 </div>
             </article>
@@ -109,24 +115,28 @@
                                     سازنده
                                     بنویسید</a></button>
                             </div>
-                            <div class="articles-author">
-                                <img src="{{ user.image }}" alt="" data-rjs="2">
-                                <div class="articles-author-right">
-                                    <h4>{{ user.first_name }}{{ user.last_name }}</h4>
-                                    <div class="social">
-                                        <a href="{{ user.telegram }}" target="_blank" title="Twitter"><i
-                                                class="icon-social_twitter_circle"></i></a>
-                                        <a href="{{ user.github }}" title="Github" target="_blank"><i
-                                                class="icon-social_github_circle"></i></a>
-                                        <a href="{{ user.linkedin }}" title="LinkedIn" target="_blank"><i
-                                                class="icon-social_linkedin_circle"></i></a>
+
+                            {% for user in admin_user %}
+                                <div class="articles-author">
+                                    <img src="{{ user.image.url }}" alt="" data-rjs="2">
+                                    <div class="articles-author-right">
+                                        <h4>{{ user.f_name }}{{ user.l_name }}</h4>
+                                        <div class="social mb-3">
+                                            <a href="{{ user.telegram }}" target="_blank" title="Twitter"><i
+                                                    class="icon-social_twitter_circle"></i></a>
+                                            <a href="{{ user.github }}" title="Github" target="_blank"><i
+                                                    class="icon-social_github_circle"></i></a>
+                                            <a href="{{ user.linkedin }}" title="LinkedIn" target="_blank"><i
+                                                    class="icon-social_linkedin_circle"></i></a>
+                                        </div>
+                                        <p>
+                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
+                                            طراحان
+                                            گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                                        </p>
                                     </div>
-                                    <p>
-                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                    </p>
                                 </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

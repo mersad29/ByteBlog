@@ -94,6 +94,7 @@ TEMPLATES = [
                 'context_processors.context_processors.all_articles',
                 'context_processors.context_processors.header',
                 'context_processors.context_processors.footer',
+                'context_processors.context_processors.admin_user'
             ],
         },
     },
@@ -105,8 +106,12 @@ WSGI_APPLICATION = 'MirMersadBlog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+# }
+
 DATABASES = {
-    'default': dj_database_url.config(default='postgresql://root:WbxgG3UoVEQqZnLHjWt6a4vu@sahand.liara.cloud:30743/postgres')
+    'default': dj_database_url.config(default='postgresql://root:pcM9ut6qir8fFm0fVOyyN2cy@sahand.liara.cloud:33196/postgres')
 }
 
 # DATABASES = {
@@ -123,11 +128,11 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'mersadblog',
+#         'NAME': 'sahand.liara.cloud',
 #         'USER': 'root',
-#         'PASSWORD': 'WbxgG3UoVEQqZnLHjWt6a4vu',
+#         'PASSWORD': 'm3KvSqXCH6nmRucJJpPdUhzB',
 #         'HOST': 'sahand.liara.cloud',   # Set to the PostgreSQL server's address
-#         'PORT': '30743',        # Default PostgreSQL port
+#         'PORT': '30994',        # Default PostgreSQL port
 #     }
 # }
 # Password validation
@@ -175,4 +180,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "assets")]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'Account.CustomUser'
+# AUTH_USER_MODEL = ''
+# AUTH_USER_MODEL = 'Account.CustomUser'

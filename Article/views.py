@@ -4,6 +4,9 @@ from .models import Article, Like, Comment
 
 def ArticleDetailView(request, slug):
     articles = get_object_or_404(Article, slug=slug)
+    next_article = Article.objects.filter(created_time__gt=articles.created_time).order_by('created_time').first()
+    prev_article = Article.objects.filter(created_time__lt=articles.created_time).order_by('-created_time').first()
+
     like = Like.objects.all()
 
     if request.method == 'POST':
@@ -20,7 +23,9 @@ def ArticleDetailView(request, slug):
     context = {
         'articles': articles,
         'like': like,
-        'liked': liked
+        'liked': liked,
+        'next_article': next_article,
+        'prev_article': prev_article,
     }
 
     return render(request, 'Article/ArticleDetail.html', context)

@@ -1,11 +1,8 @@
 from django.shortcuts import render
 from Account import models
+from Account.models import CustomUser
 from Article import models
 from Index.models import HeaderBasement, FooterBasement
-
-def user_detail(request):
-    user = models.CustomUser.objects.all()
-    return {'user': user}
 
 def all_categories(request):
     category = models.Category.objects.all()
@@ -26,3 +23,7 @@ def header(request):
 def footer(request):
     footer_description = FooterBasement.objects.all()
     return {'footer_description': footer_description}
+
+def admin_user(request):
+    users = CustomUser.objects.all()
+    return {'admin_user': users}

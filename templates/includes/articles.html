@@ -30,7 +30,8 @@
                 <div class="articles-footer">
                     <ul class="articles-footer-info">
 
-                        <li><a href="{% url 'index:like' article.slug article.id  %}" class="light-link  pl-2" title=""><i class="pe-7s-like"></i>{{ article.likes.count }}</a>
+                        <li><a href="{% url 'index:like' article.slug article.id  %}" class="light-link  pl-2" title="">
+                            <i class="pe-7s-like"></i>{{ article.likes.count }}</a>
                         </li>
                         <li><a href="#" class="light-link" title=""><i
                                 class="pe-7s-comment"></i> {{ article.comments.count }}</a>

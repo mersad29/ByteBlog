@@ -5,8 +5,6 @@
 {% block content %}
     <!-- MAIN -->
     <main>
-
-
         <div class="container">
             <div class="row">
 
@@ -28,7 +26,8 @@
                         {% for article in articles %}
                             <article class="green-article">
                                 {% if article.image %}
-                                    <img class="articles-preview-img" src="{{ article.image.url }}" alt="{{ article.image }}" title=""
+                                    <img class="articles-preview-img" src="{{ article.image.url }}"
+                                         alt="{{ article.image }}" title=""
                                          data-rjs="2">
                                 {% endif %}
                                 <div class="articles-header">
@@ -60,7 +59,8 @@
                                         {{ article.likes.count }}
                                         <i class="light-link" style=""><i class="fa-regular fa-heart fa-xl pl-2"
                                                                           style="color: #626363;"></i></i></a>|
-                                        <li><a href="#" class="light-link" title=""><i class="pe-7s-comment"></i> 7 پاسخ</a>
+                                        <li><a href="#" class="light-link" title=""><i class="pe-7s-comment"></i> {{ article.comments.count }}
+                                            پاسخ</a>
                                         </li>
                                     </ul>
                                     <a title="" class="btn" href="{{ article.get_absolute_url }}">ادامه مطلب</a>
