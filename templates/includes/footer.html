@@ -35,12 +35,12 @@
             <div class="col-12">
                 <div class="copyright">
                     <ul>
-                        <li><a href="#" title="Twitter"><i class="icon-social_twitter_circle"></i></a></li>
-                        <li><a href="#" title="Github"><i class="icon-social_github_circle"></i></a></li>
-                        <li><a href="#" title="LinkedIn"><i class="icon-social_linkedin_circle"></i></a></li>
+                        <li><a href="{{ user.instagram }}" target="_blank" title="Instagram"><i class="icon-social_instagram_circle"></i></a></li>
+                        <li><a href="{{ user.github }}" target="_blank" title="Github"><i class="icon-social_github_circle"></i></a></li>
+                        <li><a href="{{ user.linkedin }}" target="_blank" title="LinkedIn"><i class="icon-social_linkedin_circle"></i></a></li>
                     </ul>
                     <p class="font-primary">&copy; برنامه نویسی شده توسط <a
-                            href="" title="" class="black"
+                            href="{% url "index:about_me" %}" title="" class="black"
                             style="font-family: 'Microsoft Sans Serif', Tahoma, Arial, Verdana, Sans-Serif">
                         M9rsad
                     </a></p>

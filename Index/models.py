@@ -32,9 +32,21 @@ class Inbox(models.Model):
     body = models.TextField(verbose_name='متن نظر')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ثبت")
 
+
     class Meta:
         verbose_name = 'صندوق پیام'
         verbose_name_plural = 'صندوق پیام ها'
 
     def __str__(self):
         return f"{self.name} - {self.email} - {self.created_at}"
+
+class LeftNavbar(models.Model):
+    name = models.CharField(max_length=100, verbose_name='نام')
+    image = models.ImageField(upload_to='Index/images', verbose_name='تصویر')
+
+    class Meta:
+        verbose_name = 'تصویر تبلیغاتی left navbar'
+        verbose_name_plural = 'تصاویر تبلیغاتی left navbar'
+
+    def __str__(self):
+        return self.name

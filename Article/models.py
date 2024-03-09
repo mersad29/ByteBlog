@@ -7,6 +7,10 @@ from Account.models import CustomUser
 
 class Category(models.Model):
     title = models.CharField(max_length=100, verbose_name='عنوان')
+    created_time = models.DateTimeField(auto_now_add=True, blank=True, null=True, verbose_name='تاریخ انتشار')
+    color = models.CharField(max_length=50, blank=True, null=True)
+    published = models.BooleanField(default=False, verbose_name='وضعیت انتشار')
+
 
     class Meta:
         verbose_name = 'دسته بندی'
@@ -24,6 +28,8 @@ class Article(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to='Article/images', verbose_name='تصویر')
     created_time = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ انتشار')
     slug = models.SlugField(null=True, blank=True, unique=True, verbose_name='لینک مقاله')
+    published = models.BooleanField(default=False, verbose_name='وضعیت انتشار')
+    color = models.CharField(max_length=20, blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse("Articles:article_detail", args=[self.slug])
@@ -62,10 +68,12 @@ class Comment(models.Model):
     parent = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE, related_name='replies',
                                verbose_name='نظر والد')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ثبت")
+    published = models.BooleanField(default=False, verbose_name='وضعیت انتشار')
+
 
     class Meta:
         verbose_name = 'نظر'
         verbose_name_plural = 'نظرات'
 
     def __str__(self):
-        return f"{self.name} - {self.email}"
+        return f"{self.name} - {self.email} - {self.article.title}"

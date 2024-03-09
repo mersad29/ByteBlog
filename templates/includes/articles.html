@@ -3,22 +3,24 @@
 <div class="col-lg-8 col-12">
     <section class="articles">
         {% for article in articles %}
-            <article class="blue-article">
+            <article class="{{ article.color }}">
                 <div class="articles-header">
                     {% if article.time_difference < 24 %}
                         <time datetime="2016-10-11">{{ article.time_difference }}ساعت پیش</time>
                         <span class="articles-header-tag-blue">داغ</span>
                     {% else %}
-                        <time datetime="2016-10-11">{{ article.created_time|timezone:"Asia/Tehran" }}</time>
+                        <time datetime="1401-12-2">{{ article.jalali }}</time>
                     {% endif %}
 
-                    <span class="articles-header-category"><a href="#" class="blue" title="">
+                    <span class="articles-header-category">
                         {% for category in article.category.all %}
+                            <a href="{% url 'index:article_list' category.id %}" class="blue" title="">
                             {{ category.title }}
+                            </a>
                             {% if not forloop.last %},
                             {% endif %}
                         {% endfor %}
-                    </a></span>
+                    </span>
                 </div>
                 <div class="articles-content">
                     <h1><a href="{{ article.get_absolute_url }}" title="{{ article.title }}">{{ article.title }}</a>
@@ -30,11 +32,12 @@
                 <div class="articles-footer">
                     <ul class="articles-footer-info">
 
-                        <li><a href="{% url 'index:like' article.slug article.id  %}" class="light-link  pl-2" title="">
+                        <li><a href="{% url 'index:like' article.slug article.id %}" class="light-link  pl-2"
+                               title="">
                             <i class="pe-7s-like"></i>{{ article.likes.count }}</a>
                         </li>
                         <li><a href="#" class="light-link" title=""><i
-                                class="pe-7s-comment"></i> {{ article.comments.count }}</a>
+                                class="pe-7s-comment"></i> {{ article.c }}</a>
                         </li>
                     </ul>
                     <a title="" class="btn" href="{{ article.get_absolute_url }}">ادامه مطلب</a>

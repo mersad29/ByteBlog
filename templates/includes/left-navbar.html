@@ -5,7 +5,6 @@
         {% for user in admin_user %}
             <img src="{{ user.image.url }}" alt="" data-rjs="2">
             <h2>{{ user.f_name }}{{ user.l_name }}</h2>
-            <span class="author-info">دوست رجبی</span>
             <span class="author-info">توسعه دهنده وب</span>
             <span class="author-info">دانشجوی مهندسی کامپیوتر</span>
             <div class="social">
@@ -26,14 +25,16 @@
         <h2 class="aside-title">دسته بندی ها</h2>
         <ul>
             {% for category in all_categories %}
-                <li class="nav-elipse-blue"><a href="{% url 'index:article_list' category.id %}"
-                                               title="{{ category.title }}">
-                    {{ category.title }}</a></li>
+                {% if category.published %}
+                    <li class="{{ category.color }}"><a href="{% url 'index:article_list' category.id %}"
+                                                   title="{{ category.title }}">
+                        {{ category.title }}</a></li>
+                {% endif %}
             {% endfor %}
         </ul>
     </aside>
 
     <aside class="advertisement">
-        <a href="#"><img src="{% static 'img/advertisement.jpg' %}" alt="Advertisement" data-rjs="2"></a>
+            <a href="#"><img src="{{ ad.image }}" alt="{{ ad.name }}" data-rjs="2"></a>
     </aside>
 </div>

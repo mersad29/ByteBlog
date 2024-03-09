@@ -7,10 +7,10 @@ class ArticleAdmin(admin.ModelAdmin):
 
 @admin.register(models.Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title', 'created_time', 'published')
 
 @admin.register(models.Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'created_at')
+    list_display = ('name', 'email', 'created_at', 'published')
 
 admin.site.register(models.Like)

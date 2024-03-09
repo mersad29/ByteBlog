@@ -50,18 +50,21 @@
                             <a href="#" class="dropdown-toggle" title="مقالات وبلاگ">مقالات وبلاگ</a>
                             <ul class="dropdown-menu">
                                 {% for category in all_categories %}
-                                    <li class="nav-elipse-blue"><a href="{% url 'index:article_list' category.id %}"
-                                                                   title="{{ category.title }}">
-                                        {{ category.title }}</a></li>
+                                    {% if category.published %}
+                                        <li class="{{ category.color }}"><a
+                                                href="{% url 'index:article_list' category.id %}"
+                                                title="{{ category.title }}">
+                                            {{ category.title }}</a></li>
+                                    {% endif %}
                                 {% endfor %}
                             </ul>
                         </li>
                         <li><a href="{% url 'index:about_me' %}" title="درباره من">درباره من</a></li>
-{#                        <li><a href="#" title="پروژه های من">پروژه های من</a></li>#}
+                        {#                        <li><a href="#" title="پروژه های من">پروژه های من</a></li>#}
                         <li><a href="{% url 'index:contact_us' %}" title="ارتباط با من">ارتباط با من</a></li>
                         <li></li>
-                        <a class="float-left" style="color: #ff0500; font-size: x-small">بزودی</a>
-                        <li class="buyproducts-link"><a href="" title="خرید محصولات">خرید محصولات</a></li>
+{#                        <a class="float-left" style="color: #ff0500; font-size: x-small">بزودی</a>#}
+{#                        <li class="buyproducts-link"><a href="" title="خرید محصولات">خرید محصولات</a></li>#}
 
 
                     </ul>

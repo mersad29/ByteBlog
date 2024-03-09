@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from Account import models
 from Account.models import CustomUser
 from Article import models
+from Article.models import Comment
 from Index.models import HeaderBasement, FooterBasement
 
 def all_categories(request):

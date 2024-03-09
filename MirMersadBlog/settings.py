@@ -94,7 +94,7 @@ TEMPLATES = [
                 'context_processors.context_processors.all_articles',
                 'context_processors.context_processors.header',
                 'context_processors.context_processors.footer',
-                'context_processors.context_processors.admin_user'
+                'context_processors.context_processors.admin_user',
             ],
         },
     },
@@ -110,9 +110,9 @@ DATABASES = {
     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
 
-DATABASES = {
-    # 'default': dj_database_url.config(default='postgresql://root:pcM9ut6qir8fFm0fVOyyN2cy@sahand.liara.cloud:33196/postgres')
-}
+# DATABASES = {
+#     'default': dj_database_url.config(default='postgresql://root:pcM9ut6qir8fFm0fVOyyN2cy@sahand.liara.cloud:33196/postgres')
+# }
 
 # DATABASES = {
 #     'default': {

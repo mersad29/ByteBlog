@@ -95,7 +95,7 @@
                             <div class="articles-footer">
                                 <ul class="articles-footer-info">
                                     <li class="pr-3"><a title="" href="#comment" class="light-link"><i
-                                            class="pe-7s-comment"></i> {{ articles.comments.count }} پاسخ</a>
+                                            class="pe-7s-comment"></i> {{ comments }} پاسخ</a>
                                     </li>
                                     <!-- LIKE CHECKING -->
                                     {% if not liked %}
@@ -147,7 +147,8 @@
                     <div class="row">
                         <div class="col-lg-10 col-12">
                             <h1 class="articles-info-section-title">پاسخ <span
-                                    class="italic">({{ articles.comments.count }})</span></h1>
+
+                                    class="italic">({{ comments }})</span></h1>
                         </div>
                     </div>
                 </div>
@@ -168,7 +169,7 @@
                                                    name="email" id="email">
                                             <textarea class=" col-12 form-control" rows="6" placeholder="نظر"
                                                       name="body" id="body" required=""></textarea>
-                                            <button type="submit" class="btn mt-3"><i class="pe-7s-paper-plane"></i> ثبت
+                                            <button id="ajax-button" type="submit" class="btn mt-3"><i class="pe-7s-paper-plane"></i> ثبت
                                                 نظر
                                             </button>
                                         </form>
@@ -176,47 +177,50 @@
                                 </section>
                                 <!-- COMMENTS LIST -->
                                 {% for com in articles.comments.all %}
-                                    {% if com.parent == None %}
-                                        <ol>
-                                            <li>
-                                                <div class="comment">
-                                                    <img src="{% static "img/profile-picture6.png" %}"
-                                                         alt="Profile Picture"
-                                                         data-rjs="2">
-                                                    <div class="comment-content">
-                                                        <h3>{{ com.name }}</h3>
-                                                        <time datetime="2009-11-13T20:00Z">{{ com.created_at }}</time>
-                                                        <p>
-                                                            {{ com.body }}
-                                                        </p>
-                                                        <div class="comment-content-footer">
-                                                            <button class="btn btn-small"
-                                                                    onclick="set_value({{ com.id }})">پاسخ
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {% else %}
-                                                <ol class="comment-response">
-                                                    <li>
-                                                        <div class="comment">
-                                                            <img src="{% static "img/profile-picture6.png" %}"
-                                                                 alt="Profile Picture"
-                                                                 data-rjs="2">
-                                                            <div class="comment-content">
-                                                                <h3>{{ com.name }}</h3>
-                                                                <time datetime="2009-11-13T20:00Z">{{ com.created_at }}
-                                                                </time>
-                                                                <p><span class="italic">پاسخ به {{ com.parent }} </span>
-                                                                    {{ com.body }}
-                                                                </p>
+                                    {% if com.published %}
+                                        {% if com.parent == None %}
+                                            <ol>
+                                                <li>
+                                                    <div class="comment">
+                                                        <img src="{% static "img/profile-picture6.png" %}"
+                                                             alt="Profile Picture"
+                                                             data-rjs="2">
+                                                        <div class="comment-content">
+                                                            <h3>{{ com.name }}</h3>
+                                                            <time datetime="2009-11-13T20:00Z">{{ com.created_at }}</time>
+                                                            <p>
+                                                                {{ com.body }}
+                                                            </p>
+                                                            <div class="comment-content-footer">
+                                                                <button class="btn btn-small"
+                                                                        onclick="set_value({{ com.id }})">پاسخ
+                                                                </button>
                                                             </div>
                                                         </div>
-                                                    </li>
-                                                    <!-- WRITE RESPONSE -->
-                                                </ol>
-                                            </li>
-                                        </ol>
+                                                    </div>
+                                                    {% else %}
+                                                    <ol class="comment-response">
+                                                        <li>
+                                                            <div class="comment">
+                                                                <img src="{% static "img/profile-picture6.png" %}"
+                                                                     alt="Profile Picture"
+                                                                     data-rjs="2">
+                                                                <div class="comment-content">
+                                                                    <h3>{{ com.name }}</h3>
+                                                                    <time datetime="2009-11-13T20:00Z">{{ com.created_at }}
+                                                                    </time>
+                                                                    <p><span
+                                                                            class="italic">پاسخ به {{ com.parent }} </span>
+                                                                        {{ com.body }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <!-- WRITE RESPONSE -->
+                                                    </ol>
+                                                </li>
+                                            </ol>
+                                        {% endif %}
                                     {% endif %}
                                 {% endfor %}
                             </div>
@@ -233,5 +237,13 @@
             document.getElementById('parent').value = id
             window.location.href = "#comment"
         }
+
+        $(document).ready(function () {
+            $('#ajax-button').click(function () {
+                $.ajax({
+                    url: '{% url "Articles:article_detail" articles.slug %}',
+                });
+            });
+        });
     </script>
 {% endblock %}
