@@ -106,13 +106,13 @@ WSGI_APPLICATION = 'MirMersadBlog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-}
-
 # DATABASES = {
-#     'default': dj_database_url.config(default='postgresql://root:pcM9ut6qir8fFm0fVOyyN2cy@sahand.liara.cloud:33196/postgres')
+#     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 # }
+
+DATABASES = {
+    'default': dj_database_url.config(default='postgresql://root:ssYjv3akmIK7Q0O0YryqpvIM@sahand.liara.cloud:30302/postgres')
+}
 
 # DATABASES = {
 #     'default': {
