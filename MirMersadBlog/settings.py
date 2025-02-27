@@ -12,16 +12,16 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-
 import dj_database_url
-from dotenv import load_dotenv
 
-load_dotenv()
+# import dj_database_url
+# from dotenv import load_dotenv
+
+# load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -30,10 +30,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-3h5xt#((u$q-!p1agb4b@3i!oct+u)kjn=b3q1efd74*z_z2iv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -44,11 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #my apps
+    # my apps
     'Index',
     'Article',
     'Account',
-    #libs
+    # libs
     'django_render_partial',
     'ckeditor',
     # 'django_social_share',
@@ -64,8 +64,6 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -74,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'MirMersadBlog.urls'
@@ -102,39 +101,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MirMersadBlog.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # DATABASES = {
-#     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgresql://root:ssYjv3akmIK7Q0O0YryqpvIM@sahand.liara.cloud:30302/postgres')
+    "default": dj_database_url.config(default=os.getenv("DATABASE_URL"))
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'mersadblog',
-#         'USER': 'postgres',
-#         'PASSWORD': 'mergooder98',
-#         'HOST': 'localhost',   # Set to the PostgreSQL server's address
-#         'PORT': '5432',        # Default PostgreSQL port
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'sahand.liara.cloud',
-#         'USER': 'root',
-#         'PASSWORD': 'm3KvSqXCH6nmRucJJpPdUhzB',
-#         'HOST': 'sahand.liara.cloud',   # Set to the PostgreSQL server's address
-#         'PORT': '30994',        # Default PostgreSQL port
-#     }
-# }
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -153,7 +134,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -165,14 +145,17 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "assets")]
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_URL = "/static/"
+
 
 
 # Default primary key field type
