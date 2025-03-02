@@ -65,6 +65,7 @@ CKEDITOR_CONFIGS = {
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # Add this
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -72,7 +73,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 ROOT_URLCONF = 'MirMersadBlog.urls'
 
@@ -147,9 +147,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-# Static files settings (Without WhiteNoise)
-STATIC_URL = '/static/'
-STATIC_ROOT = os.getenv('STATIC_ROOT')
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = "/static/"
+
+# Collect static files in one directory for production
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+# Whitenoise settings
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # MEDIA_URL = "/media/"
 # MEDIA_ROOT = BASE_DIR / "media"
@@ -157,10 +162,6 @@ STATIC_ROOT = os.getenv('STATIC_ROOT')
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, "assets")]
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
-
-
-
-
 
 
 # Default primary key field type
