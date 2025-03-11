@@ -30,8 +30,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-3h5xt#((u$q-!p1agb4b@3i!oct+u)kjn=b3q1efd74*z_z2iv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
-DEBUG = os.getenv("DEBUG", "False") == "True"
+DEBUG = True
+# DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = ['*']
 
@@ -65,7 +65,6 @@ CKEDITOR_CONFIGS = {
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # Add this
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -98,22 +97,22 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'MirMersadBlog.wsgi.application'
+# WSGI_APPLICATION = 'MirMersadBlog.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
-    "default": dj_database_url.config(default=os.getenv("DATABASE_URL"))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+
+# DATABASES = {
+#     "default": dj_database_url.config(default=os.getenv("DATABASE_URL"))
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -147,14 +146,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = "/static/"
-
-# Collect static files in one directory for production
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
-# Whitenoise settings
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "assets")]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # MEDIA_URL = "/media/"
 # MEDIA_ROOT = BASE_DIR / "media"
