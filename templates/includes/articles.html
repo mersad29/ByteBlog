@@ -1,3 +1,4 @@
+{% load humanize %}
 {% load static %}
 {% load tz %}
 <div class="col-lg-8 col-12">
@@ -6,7 +7,7 @@
             <article class="{{ article.color }}">
                 <div class="articles-header">
                     {% if article.time_difference < 24 %}
-                        <time datetime="2016-10-11">{{ article.time_difference }}ساعت پیش</time>
+                        <time datetime="2016-10-11">{{ article.time_difference|intword }} ساعت پیش </time>
                         <span class="articles-header-tag-blue">داغ</span>
                     {% else %}
                         <time datetime="1401-12-2">{{ article.jalali }}</time>

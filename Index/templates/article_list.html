@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load tz %}
+{% load humanize %}
 
 {% block content %}
     <!-- MAIN -->
@@ -32,7 +33,7 @@
                                 {% endif %}
                                 <div class="articles-header">
                                     {% if article.time_difference < 24 %}
-                                        <time datetime="2016-10-11">{{ article.time_difference }}ساعت پیش</time>
+                                        <time datetime="2016-10-11">{{ article.time_difference|intword }}ساعت پیش</time>
                                         <span class="articles-header-tag-blue">داغ</span>
                                     {% else %}
                                         <time datetime="2016-10-11">{{ article.created_time|timezone:"Asia/Tehran" }}</time>
