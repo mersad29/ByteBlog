@@ -1,3 +1,5 @@
+![Screenshot](screenshot.jpg)
+
 # 📝 ByteBlog
 
 A simple and extensible blog application built with Django.  
